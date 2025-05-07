@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>言語サポートと開発者生産性 - Windsurf</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f0f9ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 20px 40px;
+        }
+        .content {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            gap: 30px;
+        }
+        .left-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .right-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card {
+            background-color: #f8fafc;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+            flex: 1;
+        }
+        .card h3 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+        .language-card {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            transition: transform 0.2s ease;
+        }
+        .language-card:hover {
+            transform: translateX(5px);
+        }
+        .language-strong {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid #3b82f6;
+        }
+        .language-limited {
+            background-color: rgba(209, 213, 219, 0.2);
+            border-left: 4px solid #9ca3af;
+        }
+        .language-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .language-icon.strong {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: #2563eb;
+        }
+        .language-icon.limited {
+            background-color: rgba(156, 163, 175, 0.15);
+            color: #6b7280;
+        }
+        .language-name {
+            font-weight: 500;
+        }
+        .chart-container {
+            height: 240px;
+            position: relative;
+        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .feature-icon {
+            background-color: rgba(59, 130, 246, 0.1);
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+            color: #2563eb;
+        }
+        .productivity-bar {
+            height: 40px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            position: relative;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .productivity-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.1) 10px,
+                rgba(255, 255, 255, 0.2) 10px,
+                rgba(255, 255, 255, 0.2) 20px
+            );
+        }
+        .productivity-label {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 15px;
+            color: white;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .productivity-value {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 15px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .footer {
+            padding: 15px 40px;
+            color: #6b7280;
+            font-size: 14px;
+            background-color: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: right;
+        }
+        .page-number {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-left: 10px;
+        }
+        .dag-visual {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            height: 140px;
+            position: relative;
+            margin: 10px 0;
+        }
+        .dag-node {
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            background-color: #dbeafe;
+            border: 1px solid #93c5fd;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            color: #1e40af;
+            font-weight: 500;
+        }
+        .dag-line {
+            position: absolute;
+            background-color: #93c5fd;
+            z-index: 1;
+        }
+        .beginner-note {
+            background-color: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 12px 15px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h1 class="text-3xl font-bold">言語サポートと開発者生産性</h1>
+            <p class="mt-2 text-blue-100">WindsurfのAI支援によるコーディングの効率化</p>
+        </div>
+        
+        <div class="content">
+            <div class="left-column">
+                <div class="card">
+                    <h3>
+                        <i class="fas fa-code mr-3 text-blue-600"></i>
+                        対応言語の強み
+                    </h3>
+                    
+                    <div class="language-card language-strong">
+                        <div class="language-icon strong"><i class="fab fa-java"></i></div>
+                        <div>
+                            <div class="language-name">Java</div>
+                            <div class="text-sm text-gray-600">エンタープライズ開発向け強力なサポート</div>
+                        </div>
+                    </div>
+                    
+                    <div class="language-card language-strong">
+                        <div class="language-icon strong"><i class="fab fa-windows"></i></div>
+                        <div>
+                            <div class="language-name">.NET</div>
+                            <div class="text-sm text-gray-600">C#、VB.NETに対する高度な理解</div>
+                        </div>
+                    </div>
+                    
+                    <div class="language-card language-strong">
+                        <div class="language-icon strong"><i class="fas fa-cog"></i></div>
+                        <div>
+                            <div class="language-name">Rust</div>
+                            <div class="text-sm text-gray-600">安全性を考慮したコード提案</div>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="language-card language-limited">
+                        <div class="language-icon limited"><i class="fab fa-swift"></i></div>
+                        <div>
+                            <div class="language-name">Swift</div>
+                            <div class="text-sm text-gray-600">サポート制限あり（改善中）</div>
+                        </div>
+                    </div>
+                    
+                    <div class="language-card language-limited">
+                        <div class="language-icon limited"><i class="fab fa-android"></i></div>
+                        <div>
+                            <div class="language-name">Kotlin</div>
+                            <div class="text-sm text-gray-600">サポート制限あり（改善中）</div>
+                        </div>
+                    </div>
+                    -->                     
+                    <div class="chart-container">
+                        <canvas id="languageChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="card">
+                    <h3>
+                        <i class="fas fa-rocket mr-3 text-blue-600"></i>
+                        開発者生産性の向上
+                    </h3>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium text-gray-800">PR完了速度の向上</div>
+                            <p class="text-sm text-gray-600">AIがコード変更の背景を理解し、関連する全ファイルを一括で更新</p>
+                            
+                            <div class="productivity-bar" style="width: 90%;">
+                                <span class="productivity-label">PR完了時間</span>
+                                <span class="productivity-value">40%短縮</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium text-gray-800">コンパイルエラーの削減</div>
+                            <p class="text-sm text-gray-600">Recursive Semantic DAG（再帰的意味有向非巡回グラフ）による型チェック強化</p>
+                            
+                            <!--
+                            <div class="dag-visual">
+                                <div class="dag-node" style="top: 10px; left: 50%; transform: translateX(-50%);">
+                                    型チェック
+                                </div>
+                                <div class="dag-node" style="top: 70px; left: 20%;">
+                                    構文解析
+                                </div>
+                                <div class="dag-node" style="top: 70px; left: 60%;">
+                                    コード生成
+                                </div>
+                                
+                                <div class="dag-line" style="width: 2px; height: 30px; top: 40px; left: 50%"></div>
+                                <div class="dag-line" style="width: 100px; height: 2px; top: 70px; left: 220px"></div>
+                                <div class="dag-line" style="width: 2px; height: 30px; top: 40px; left: 220px"></div>
+                                <div class="dag-line" style="width: 2px; height: 30px; top: 40px; left: 320px"></div>
+                            </div>
+                            -->
+                            
+                            <div class="productivity-bar" style="width: 80%;">
+                                <span class="productivity-label">コンパイルエラー</span>
+                                <span class="productivity-value">60%削減</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium text-gray-800">マルチファイルリファクタリング</div>
+                            <p class="text-sm text-gray-600">ビジネスロジックを理解したAIによる包括的なコード改善</p>
+                            
+                            <div class="productivity-bar" style="width: 70%;">
+                                <span class="productivity-label">リファクタリング時間</span>
+                                <span class="productivity-value">50%短縮</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="beginner-note">
+                        <p class="text-sm text-green-800">
+                            <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                            <strong>初学者向けポイント:</strong> Windsurfはコードの型やエラーを事前に検知し、複数ファイルにまたがる変更も安全に行えます。これにより、特にチーム開発での作業効率が大幅に向上します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            AI勉強会 <span class="page-number">4</span>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('languageChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Java', '.NET', 'Rust', 'Python', 'JavaScript', 'Swift', 'Kotlin'],
+                    datasets: [{
+                        label: 'サポートレベル',
+                        data: [95, 90, 85, 75, 70, 45, 40],
+                        backgroundColor: [
+                            '#3b82f6', '#3b82f6', '#3b82f6', '#60a5fa', '#60a5fa', '#9ca3af', '#9ca3af'
+                        ],
+                        borderWidth: 0,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            max: 100,
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    maintainAspectRatio: false,
+                    responsive: true
+                }
+            });
+        });
+    </script>
+</body>
+</html>

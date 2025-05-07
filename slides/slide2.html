@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登壇者プロフィール</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4f1fe 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 40px;
+        }
+        .title {
+            color: #2563eb;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        .profile-container {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        .profile-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background-color: #e0e7ff;
+            margin-right: 40px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 5px solid white;
+        }
+        .profile-icon {
+            color: #4f46e5;
+            font-size: 8rem;
+        }
+        .profile-details {
+            flex: 1;
+        }
+        .profile-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid #bfdbfe;
+            padding-bottom: 0.5rem;
+        }
+        .profile-location {
+            font-size: 1.2rem;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .profile-location i {
+            color: #2563eb;
+            margin-right: 10px;
+        }
+        .profile-bio {
+            color: #4b5563;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        .skills-container {
+            width: 100%;
+            max-width: 900px;
+        }
+        .skills-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .skills-title i {
+            margin-right: 10px;
+            color: #2563eb;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-badge {
+            background-color: #eff6ff;
+            color: #2563eb;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        .skill-badge i {
+            margin-right: 8px;
+            font-size: 0.8rem;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #6b7280;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slide-content">
+            <h1 class="title">登壇者プロフィール</h1>
+            
+            <div class="profile-container">
+                <div class="profile-image">
+                    <i class="fas fa-user-circle profile-icon"></i>
+                </div>
+                <div class="profile-details">
+                    <h2 class="profile-name">安蒜絵梨加</h2>
+                    <p class="profile-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        福島県福島市出身
+                    </p>
+                    <p class="profile-bio">
+                        PHPとJavaScriptを中心に7年以上の実務経験があり、個人開発を含めると10年以上にわたってWebシステム開発に携わっている。<br>
+                        現在はGoLangやJSのモダンフレームワーク中心に開発。<br>
+                        バックエンドからフロントエンドまで一貫して対応できるフルスタックエンジニアとして、要件定義から設計、開発、運用保守まで幅広く対応可能。<br>
+                        AIについてはまだまだ勉強中。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="skills-container">
+                <h3 class="skills-title">
+                    <i class="fas fa-code"></i>
+                    主なスキル
+                </h3>
+                <div class="skills-list">
+                    <div class="skill-badge"><i class="fab fa-php"></i>PHP</div>
+                    <div class="skill-badge"><i class="fab fa-js"></i>JavaScript</div>
+                    <div class="skill-badge"><i class="fab fa-golang"></i>GoLang</div>
+                    <div class="skill-badge"><i class="fab fa-react"></i>React</div>
+                    <div class="skill-badge"><i class="fab fa-vuejs"></i>Vue.js</div>
+                    <div class="skill-badge"><i class="fab fa-node-js"></i>Node.js</div>
+                    <div class="skill-badge"><i class="fas fa-database"></i>SQL</div>
+                    <div class="skill-badge"><i class="fab fa-docker"></i>Docker</div>
+                    <div class="skill-badge"><i class="fab fa-aws"></i>AWS</div>
+                    <div class="skill-badge"><i class="fas fa-server"></i>バックエンド開発</div>
+                    <div class="skill-badge"><i class="fas fa-desktop"></i>フロントエンド開発</div>
+                    <div class="skill-badge"><i class="fas fa-sitemap"></i>システム設計</div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                AI勉強会
+            </div>
+        </div>
+    </div>
+</body>
+</html>

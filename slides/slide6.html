@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手を動かしながらWindsurfを理解する - 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f0f9ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 20px 40px;
+        }
+        .content {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            color: #2563eb;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .section-title i {
+            margin-right: 15px;
+            background-color: rgba(37, 99, 235, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .workshop-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .workshop-card {
+            flex: 1;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .workshop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .workshop-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .workshop-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: #2563eb;
+            font-size: 1.5rem;
+        }
+        .workshop-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e40af;
+        }
+        .workshop-desc {
+            color: #4b5563;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .workshop-steps {
+            margin-top: 10px;
+        }
+        .step-item {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: flex-start;
+        }
+        .step-number {
+            background-color: #2563eb;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .step-text {
+            font-size: 0.95rem;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+        .link-button {
+            background-color: #2563eb;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            margin-top: auto;
+        }
+        .link-button:hover {
+            background-color: #1d4ed8;
+        }
+        .link-button i {
+            margin-right: 8px;
+        }
+        .repo-info {
+            background-color: #f0f9ff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px dashed #93c5fd;
+        }
+        .repo-info h4 {
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .repo-info h4 i {
+            margin-right: 8px;
+        }
+        .repo-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        .repo-link:hover {
+            text-decoration: underline;
+        }
+        .repo-link i {
+            margin-right: 5px;
+        }
+        .footer {
+            padding: 15px 40px;
+            color: #6b7280;
+            font-size: 14px;
+            background-color: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: right;
+        }
+        .page-number {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h1 class="text-3xl font-bold">手を動かしながらWindsurfを理解する①</h1>
+            <p class="mt-2 text-blue-100">実践的なハンズオンで体験するAI駆動開発</p>
+        </div>
+        
+        <div class="content">           
+            <div class="workshop-container">
+                <div class="workshop-card">
+                    <div class="workshop-header">
+                        <div class="workshop-icon">
+                            <i class="fas fa-sticky-note"></i>
+                        </div>
+                        <h3 class="workshop-title">簡単なメモアプリを0→1で開発</h3>
+                    </div>
+                    
+                    <p class="workshop-desc">
+                        参考になるプロンプトを提供するので、まずは無料枠を使って一から開発してみましょう。思った以上に「思った通り」の開発ができるでしょう。細かいところは手作業で修正してもOKです。
+                    </p>
+                    
+                    <div class="workshop-steps">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-text">プロンプト集を参照して開発を始める</div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-text">フロントエンド（React）とバックエンド（Go）の基本構造を生成</div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-text">メモの作成・編集・削除機能を実装</div>
+                        </div>
+                    </div>
+                    
+                    <div class="repo-info">
+                        <h4><i class="fab fa-github"></i>プロンプト集のリンク</h4>
+                        <a href="https://github.com/erikaambiru/simple-memo-app/blob/main/development-prompts.md" class="repo-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            https://github.com/erikaambiru/simple-memo-app/blob/main/development-prompts.md
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <p class="text-blue-800 font-medium"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>ポイント</p>
+                <p class="text-gray-700">Windsurfを使うと、フロントエンドとバックエンドの連携部分も含めて、一貫した開発が可能です。APIの設計からデータの受け渡しまで、全体を見通した提案をしてくれます。</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            AI勉強会 <span class="page-number">5</span>
+        </div>
+    </div>
+</body>
+</html>

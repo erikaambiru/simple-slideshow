@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スライド1</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4f1fe 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        .title {
+            color: #2563eb;
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        .subtitle {
+            color: #4b5563;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .code-graphic {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 300px;
+            margin-bottom: 2rem;
+        }
+        .code-element {
+            position: absolute;
+            background-color: #f1f5f9;
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #2563eb;
+        }
+        .code-element:nth-child(1) {
+            top: 0;
+            left: 10%;
+            width: 200px;
+            transform: rotate(-3deg);
+        }
+        .code-element:nth-child(2) {
+            top: 40px;
+            left: 40%;
+            width: 320px;
+            transform: rotate(2deg);
+        }
+        .code-element:nth-child(3) {
+            top: 140px;
+            left: 25%;
+            width: 260px;
+            transform: rotate(-1deg);
+        }
+        .code-text {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+        .highlight {
+            color: #2563eb;
+            font-weight: bold;
+        }
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #6b7280;
+            font-size: 1rem;
+        }
+        .ai-icon {
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            color: #2563eb;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slide-content">
+            <div class="ai-icon">
+                <i class="fas fa-robot fa-4x"></i>
+            </div>
+            
+            <h1 class="title">Windsurfで実現するAI駆動開発</h1>
+            <h2 class="subtitle">〜次世代コードエディタの可能性〜</h2>
+            
+            <div class="code-graphic">
+                <div class="code-element">
+                    <pre class="code-text"><span class="highlight">function</span> generateCode() {
+    <span class="highlight">return</span> AI.suggest();</pre>
+                </div>
+                <div class="code-element">
+                    <pre class="code-text"><span class="highlight">class</span> WindsurfAI {
+    <span class="highlight">constructor</span>() {
+        <span class="highlight">this</span>.context = <span class="highlight">new</span> CascadeSystem();
+    }
+}</pre>
+                </div>
+                <div class="code-element">
+                    <pre class="code-text"><span class="highlight">// Fill-in-the-Middle</span>
+AI.complete(code, context);</pre>
+                </div>
+            </div>
+            
+            <div class="footer">
+                AI勉強会
+            </div>
+        </div>
+    </div>
+</body>
+</html>

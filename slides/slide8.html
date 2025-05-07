@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まとめ - Windsurfの開発相棒感</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f0f9ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 20px 40px;
+        }
+        .content {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-title {
+            color: #2563eb;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .section-title i {
+            margin-right: 15px;
+            background-color: rgba(37, 99, 235, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .summary-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .summary-card {
+            flex: 1;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+        .summary-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .summary-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            color: #2563eb;
+            font-size: 1.5rem;
+        }
+        .summary-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e40af;
+        }
+        .summary-text {
+            color: #4b5563;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .key-points {
+            margin-top: 10px;
+        }
+        .point-item {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        .point-icon {
+            color: #2563eb;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .point-text {
+            font-size: 1rem;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+        .highlight-box {
+            background-color: #dbeafe;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid #3b82f6;
+        }
+        .highlight-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .highlight-title i {
+            margin-right: 10px;
+        }
+        .highlight-text {
+            color: #1e3a8a;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .footer {
+            padding: 15px 40px;
+            color: #6b7280;
+            font-size: 14px;
+            background-color: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            text-align: right;
+        }
+        .page-number {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h1 class="text-3xl font-bold">まとめ</h1>
+            <p class="mt-2 text-blue-100">Windsurfの「開発の相棒感」を体感しよう</p>
+        </div>
+        
+        <div class="content">
+            <div class="summary-container">
+                <div class="summary-card">
+                    <div class="summary-header">
+                        <div class="summary-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="summary-title">開発の相棒としてのWindsurf</h3>
+                    </div>
+                    
+                    <p class="summary-text">
+                        このあとは実際に開発をしながらWindsurfの「開発の相棒感」を感じてください。従来のAIコーディングアシスタントとは一線を画す、コードベース全体を理解した提案力を体験できます。
+                    </p>
+                    
+                    <div class="key-points">
+                        <div class="point-item">
+                            <div class="point-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="point-text">
+                                <strong>自然な対話:</strong> 技術的な専門用語を使わなくても、自然言語で要件を伝えるだけで適切なコードを提案
+                            </div>
+                        </div>
+                        
+                        <div class="point-item">
+                            <div class="point-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="point-text">
+                                <strong>コンテキスト理解:</strong> プロジェクト全体の構造や依存関係を把握し、一貫性のある提案を実現
+                            </div>
+                        </div>
+                        
+                        <div class="point-item">
+                            <div class="point-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="point-text">
+                                <strong>学習と適応:</strong> フィードバックを学習し、開発者の好みやコーディングスタイルに適応
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-header">
+                        <div class="summary-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3 class="summary-title">わからないことはWindsurfに聞こう</h3>
+                    </div>
+                    
+                    <p class="summary-text">
+                        開発中に疑問点や困ったことがあれば、Windsurfに質問してみましょう。単なるコード生成だけでなく、問題解決のパートナーとしても活用できます。
+                    </p>
+                    
+                    <div class="key-points">
+                        <div class="point-item">
+                            <div class="point-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="point-text">
+                                <strong>エラー解決:</strong> 「このエラーの原因は？」と聞くだけで、コンテキストを考慮した解決策を提案
+                            </div>
+                        </div>
+                        
+                        <div class="point-item">
+                            <div class="point-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="point-text">
+                                <strong>アーキテクチャ相談:</strong> 「この機能はどう実装すべき？」といった設計レベルの相談も可能
+                            </div>
+                        </div>
+                        
+                        <div class="point-item">
+                            <div class="point-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="point-text">
+                                <strong>知識の補完:</strong> 新しい技術やライブラリについての情報も提供
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 class="highlight-title">
+                    <i class="fas fa-star"></i>
+                    今日のポイント
+                </h3>
+                <p class="highlight-text">
+                    Windsurfは単なるコード補完ツールではなく、開発全体をサポートする「AI駆動開発環境」です。プロジェクトの文脈を理解し、複数ファイルにまたがる変更も一貫して提案できる点が最大の強みです。実際に手を動かしながら、その能力を体感してください。
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            AI勉強会 <span class="page-number">7</span>
+        </div>
+    </div>
+</body>
+</html>
