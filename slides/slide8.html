@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>まとめ - Windsurfの開発相棒感</title>
+    <title>手を動かしながらWindsurfを理解する - 2</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -58,12 +58,12 @@
             justify-content: center;
             align-items: center;
         }
-        .summary-container {
+        .workshop-container {
             display: flex;
             gap: 30px;
             margin-bottom: 30px;
         }
-        .summary-card {
+        .workshop-card {
             flex: 1;
             background-color: #f8fafc;
             border-radius: 8px;
@@ -72,13 +72,18 @@
             border: 1px solid #e2e8f0;
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .summary-header {
+        .workshop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .workshop-header {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
         }
-        .summary-icon {
+        .workshop-icon {
             width: 50px;
             height: 50px;
             background-color: rgba(37, 99, 235, 0.1);
@@ -90,57 +95,94 @@
             color: #2563eb;
             font-size: 1.5rem;
         }
-        .summary-title {
+        .workshop-title {
             font-size: 1.4rem;
             font-weight: 700;
             color: #1e40af;
         }
-        .summary-text {
+        .workshop-desc {
             color: #4b5563;
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 20px;
+            flex-grow: 1;
         }
-        .key-points {
+        .workshop-steps {
             margin-top: 10px;
         }
-        .point-item {
+        .step-item {
             display: flex;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             align-items: flex-start;
         }
-        .point-icon {
-            color: #2563eb;
+        .step-number {
+            background-color: #2563eb;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 700;
             margin-right: 10px;
             flex-shrink: 0;
         }
-        .point-text {
-            font-size: 1rem;
+        .step-text {
+            font-size: 0.95rem;
             color: #4b5563;
             line-height: 1.5;
         }
-        .highlight-box {
-            background-color: #dbeafe;
+        .repo-info {
+            background-color: #f0f9ff;
             border-radius: 8px;
-            padding: 20px;
+            padding: 15px;
             margin-top: 20px;
-            border-left: 4px solid #3b82f6;
+            border: 1px dashed #93c5fd;
         }
-        .highlight-title {
-            font-size: 1.2rem;
+        .repo-info h4 {
+            color: #2563eb;
             font-weight: 600;
-            color: #1e40af;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
         }
-        .highlight-title i {
-            margin-right: 10px;
+        .repo-info h4 i {
+            margin-right: 8px;
         }
-        .highlight-text {
-            color: #1e3a8a;
-            font-size: 1rem;
-            line-height: 1.6;
+        .repo-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        .repo-link:hover {
+            text-decoration: underline;
+        }
+        .repo-link i {
+            margin-right: 5px;
+        }
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .feature-tag {
+            background-color: #dbeafe;
+            color: #1e40af;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        .feature-tag i {
+            margin-right: 5px;
+            font-size: 0.8rem;
         }
         .footer {
             padding: 15px 40px;
@@ -161,110 +203,96 @@
             line-height: 30px;
             margin-left: 10px;
         }
+        .code-sample {
+            background-color: #1e293b;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 14px;
+            color: #e2e8f0;
+            margin: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .highlight {
+            color: #3b82f6;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
     <div class="slide-container">
         <div class="header">
-            <h1 class="text-3xl font-bold">まとめ</h1>
-            <p class="mt-2 text-blue-100">Windsurfの「開発の相棒感」を体感しよう</p>
+            <h1 class="text-3xl font-bold">手を動かしながらWindsurfを理解する②</h1>
+            <p class="mt-2 text-blue-100">実践的なハンズオンで体験するAI駆動開発</p>
         </div>
         
         <div class="content">
-            <div class="summary-container">
-                <div class="summary-card">
-                    <div class="summary-header">
-                        <div class="summary-icon">
-                            <i class="fas fa-hands-helping"></i>
+            <h2 class="section-title">
+                <i class="fas fa-tasks"></i>
+                タスク管理アプリの改修
+            </h2>
+            
+            <div class="workshop-container">
+                <div class="workshop-card">
+                    <div class="workshop-header">
+                        <div class="workshop-icon">
+                            <i class="fas fa-project-diagram"></i>
                         </div>
-                        <h3 class="summary-title">開発の相棒としてのWindsurf</h3>
+                        <h3 class="workshop-title">既存アプリの機能拡張</h3>
                     </div>
                     
-                    <p class="summary-text">
-                        このあとは実際に開発をしながらWindsurfの「開発の相棒感」を感じてください。従来のAIコーディングアシスタントとは一線を画す、コードベース全体を理解した提案力を体験できます。
+                    <p class="workshop-desc">
+                        Githubでリポジトリを公開しているので、各々自由に改修してみてください。Windsurfの全横断的なコード分析力を体感できると思います。
                     </p>
                     
-                    <div class="key-points">
-                        <div class="point-item">
-                            <div class="point-icon">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div class="point-text">
-                                <strong>自然な対話:</strong> 技術的な専門用語を使わなくても、自然言語で要件を伝えるだけで適切なコードを提案
-                            </div>
+                    <div class="workshop-steps">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-text">リポジトリをクローンして既存コードを確認</div>
                         </div>
-                        
-                        <div class="point-item">
-                            <div class="point-icon">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div class="point-text">
-                                <strong>コンテキスト理解:</strong> プロジェクト全体の構造や依存関係を把握し、一貫性のある提案を実現
-                            </div>
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Windsurfに改修したい機能を自然言語で説明</div>
                         </div>
-                        
-                        <div class="point-item">
-                            <div class="point-icon">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div class="point-text">
-                                <strong>学習と適応:</strong> フィードバックを学習し、開発者の好みやコーディングスタイルに適応
-                            </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-text">AIが提案するコード変更を確認・適用</div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="summary-card">
-                    <div class="summary-header">
-                        <div class="summary-icon">
-                            <i class="fas fa-question-circle"></i>
-                        </div>
-                        <h3 class="summary-title">わからないことはWindsurfに聞こう</h3>
+                    
+                    <div class="feature-list">
+                        <div class="feature-tag"><i class="fas fa-layer-group"></i>ドラッグ＆ドロップ</div>
+                        <div class="feature-tag"><i class="fas fa-filter"></i>フィルタリング</div>
+                        <div class="feature-tag"><i class="fas fa-sort"></i>並べ替え</div>
+                        <div class="feature-tag"><i class="fas fa-palette"></i>テーマ切替</div>
+                        <div class="feature-tag"><i class="fas fa-chart-bar"></i>統計機能</div>
                     </div>
                     
-                    <p class="summary-text">
-                        開発中に疑問点や困ったことがあれば、Windsurfに質問してみましょう。単なるコード生成だけでなく、問題解決のパートナーとしても活用できます。
-                    </p>
-                    
-                    <div class="key-points">
-                        <div class="point-item">
-                            <div class="point-icon">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <div class="point-text">
-                                <strong>エラー解決:</strong> 「このエラーの原因は？」と聞くだけで、コンテキストを考慮した解決策を提案
-                            </div>
-                        </div>
-                        
-                        <div class="point-item">
-                            <div class="point-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <div class="point-text">
-                                <strong>アーキテクチャ相談:</strong> 「この機能はどう実装すべき？」といった設計レベルの相談も可能
-                            </div>
-                        </div>
-                        
-                        <div class="point-item">
-                            <div class="point-icon">
-                                <i class="fas fa-book"></i>
-                            </div>
-                            <div class="point-text">
-                                <strong>知識の補完:</strong> 新しい技術やライブラリについての情報も提供
-                            </div>
-                        </div>
+                    <div class="repo-info">
+                        <h4><i class="fab fa-github"></i>リポジトリリンク</h4>
+                        <a href="https://github.com/erikaambiru/test-task-app" class="repo-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            https://github.com/erikaambiru/test-task-app
+                        </a>
                     </div>
                 </div>
             </div>
             
-            <div class="highlight-box">
-                <h3 class="highlight-title">
-                    <i class="fas fa-star"></i>
-                    今日のポイント
-                </h3>
-                <p class="highlight-text">
-                    Windsurfは単なるコード補完ツールではなく、開発全体をサポートする「AI駆動開発環境」です。プロジェクトの文脈を理解し、複数ファイルにまたがる変更も一貫して提案できる点が最大の強みです。実際に手を動かしながら、その能力を体感してください。
-                </p>
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <p class="text-blue-800 font-medium"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>Windsurfの強み</p>
+                <p class="text-gray-700">既存コードベースを理解し、複数ファイルにまたがる変更を一貫して提案できる点がWindsurfの強みです。例えば、新機能追加時に必要なコンポーネント、状態管理、APIなど関連する全ての変更を把握した上で実装を提案します。</p>
+                
+                <div class="code-sample mt-3">
+                    <span class="highlight">// Windsurfの提案例（並べ替え機能の追加）</span><br>
+                    <span>const sortTasks = (tasks, sortType) => {</span><br>
+                    <span>&nbsp;&nbsp;switch(sortType) {</span><br>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;case 'priority': </span><br>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return [...tasks].sort((a, b) => getPriorityValue(a) - getPriorityValue(b));</span><br>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;// 他のソートタイプも同様に実装</span><br>
+                    <span>&nbsp;&nbsp;}</span><br>
+                    <span>};</span>
+                </div>
             </div>
         </div>
         

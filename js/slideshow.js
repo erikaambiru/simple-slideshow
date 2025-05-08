@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const slideCounter = document.getElementById('slideCounter');
     
     // スライド制御用の変数
-    const totalSlides = 10;
+    const totalSlides = 11;
     let currentSlide = 1;
     let autoPlayInterval = null;
     let isPlaying = false;

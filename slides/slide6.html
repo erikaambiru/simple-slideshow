@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>手を動かしながらWindsurfを理解する - 1</title>
+    <title>事前準備 - Windsurfのインストールと設定</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -58,32 +58,27 @@
             justify-content: center;
             align-items: center;
         }
-        .workshop-container {
+        .setup-container {
             display: flex;
             gap: 30px;
             margin-bottom: 30px;
         }
-        .workshop-card {
+        .setup-card {
             flex: 1;
             background-color: #f8fafc;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             border: 1px solid #e2e8f0;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .workshop-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-        .workshop-header {
+        .setup-header {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
         }
-        .workshop-icon {
+        .setup-icon {
             width: 50px;
             height: 50px;
             background-color: rgba(37, 99, 235, 0.1);
@@ -95,28 +90,21 @@
             color: #2563eb;
             font-size: 1.5rem;
         }
-        .workshop-title {
+        .setup-title {
             font-size: 1.4rem;
             font-weight: 700;
             color: #1e40af;
         }
-        .workshop-desc {
-            color: #4b5563;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-        .workshop-steps {
-            margin-top: 10px;
+        .setup-steps {
+            margin-top: 15px;
         }
         .step-item {
             display: flex;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             align-items: flex-start;
         }
         .step-number {
-            background-color: #2563eb;
+            background-color: #3b82f6;
             color: white;
             width: 24px;
             height: 24px;
@@ -124,63 +112,77 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-right: 10px;
+            margin-right: 12px;
             flex-shrink: 0;
+            font-size: 0.8rem;
         }
         .step-text {
-            font-size: 0.95rem;
+            flex: 1;
+            font-size: 1rem;
             color: #4b5563;
             line-height: 1.5;
         }
-        .link-button {
-            background-color: #2563eb;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 6px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            font-weight: 500;
-            transition: background-color 0.3s;
-            margin-top: auto;
+        .step-code {
+            background-color: #f1f5f9;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: monospace;
+            margin-top: 5px;
+            color: #334155;
+            border-left: 3px solid #3b82f6;
         }
-        .link-button:hover {
-            background-color: #1d4ed8;
-        }
-        .link-button i {
-            margin-right: 8px;
-        }
-        .repo-info {
-            background-color: #f0f9ff;
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             border-radius: 8px;
+            overflow: hidden;
+        }
+        .comparison-table th {
+            background-color: #e0f2fe;
+            color: #1e40af;
+            text-align: left;
+            padding: 12px 15px;
+            font-weight: 600;
+        }
+        .comparison-table td {
+            padding: 12px 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        .feature-available {
+            color: #16a34a;
+        }
+        .feature-limited {
+            color: #ca8a04;
+        }
+        .feature-unavailable {
+            color: #dc2626;
+        }
+        .note-box {
+            background-color: #fffbeb;
+            border-left: 4px solid #f59e0b;
             padding: 15px;
             margin-top: 20px;
-            border: 1px dashed #93c5fd;
+            border-radius: 4px;
         }
-        .repo-info h4 {
-            color: #2563eb;
+        .note-title {
             font-weight: 600;
-            margin-bottom: 10px;
+            color: #92400e;
             display: flex;
             align-items: center;
+            margin-bottom: 8px;
         }
-        .repo-info h4 i {
+        .note-title i {
             margin-right: 8px;
         }
-        .repo-link {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-        }
-        .repo-link:hover {
-            text-decoration: underline;
-        }
-        .repo-link i {
-            margin-right: 5px;
+        .note-text {
+            color: #92400e;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
         .footer {
             padding: 15px 40px;
@@ -206,52 +208,112 @@
 <body>
     <div class="slide-container">
         <div class="header">
-            <h1 class="text-3xl font-bold">手を動かしながらWindsurfを理解する①</h1>
-            <p class="mt-2 text-blue-100">実践的なハンズオンで体験するAI駆動開発</p>
+            <h1 class="text-3xl font-bold">Windsurfのインストールと設定</h1>
+            <p class="mt-2 text-blue-100">開発環境の準備とCascadeの使い方</p>
         </div>
         
-        <div class="content">           
-            <div class="workshop-container">
-                <div class="workshop-card">
-                    <div class="workshop-header">
-                        <div class="workshop-icon">
-                            <i class="fas fa-sticky-note"></i>
+        <div class="content">
+            <div class="setup-container">
+                <div class="setup-card">
+                    <div class="setup-header">
+                        <div class="setup-icon">
+                            <i class="fas fa-download"></i>
                         </div>
-                        <h3 class="workshop-title">簡単なメモアプリを0→1で開発</h3>
+                        <h3 class="setup-title">Windsurfのインストール方法</h3>
                     </div>
                     
-                    <p class="workshop-desc">
-                        参考になるプロンプトを提供するので、まずは無料枠を使って一から開発してみましょう。思った以上に「思った通り」の開発ができるでしょう。細かいところは手作業で修正してもOKです。
-                    </p>
-                    
-                    <div class="workshop-steps">
+                    <div class="setup-steps">
                         <div class="step-item">
                             <div class="step-number">1</div>
-                            <div class="step-text">プロンプト集を参照して開発を始める</div>
+                            <div class="step-text">
+                                <strong>Windsurf公式サイトにアクセス</strong>
+                                <div class="step-code">
+                                    <a href="https://windsurf.ai/download" target="_blank" class="text-blue-600 hover:underline">
+                                        <i class="fas fa-external-link-alt mr-1"></i>https://windsurf.ai/download
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+                        
                         <div class="step-item">
                             <div class="step-number">2</div>
-                            <div class="step-text">フロントエンド（React）とバックエンド（Go）の基本構造を生成</div>
+                            <div class="step-text">
+                                <strong>Windowsのダウンロードボタンをクリック</strong>
+                                <p class="mt-2 text-sm">公式サイトの「Download for Windows」ボタンをクリックします。</p>
+                            </div>
                         </div>
+                        
                         <div class="step-item">
                             <div class="step-number">3</div>
-                            <div class="step-text">メモの作成・編集・削除機能を実装</div>
+                            <div class="step-text">
+                                <strong>ダウンロードしたインストーラーを実行</strong>
+                                <p class="mt-2 text-sm">ダウンロードしたインストーラーファイルを実行します。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-text">
+                                <strong>画面の指示に従ってインストールを完了</strong>
+                                <p class="mt-2 text-sm">インストールウィザードの指示に従ってインストールを完了します。</p>
+                            </div>
+                        </div>
+                                               
+                        <div class="step-item">
+                            <div class="step-number">5</div>
+                            <div class="step-text">
+                                <strong>Cascadeの使い方</strong>
+                                <p class="mt-2 text-sm">自然言語で開発するには、「シンプルなメモアプリを作成して」のように目的を明確に伝えます。詳細な仕様を追加するとより正確な結果が得られます。</p>
+                            </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="setup-card">
+                    <div class="setup-header">
+                        <div class="setup-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                        <h3 class="setup-title">Windsurf無料枠とCascadeBase</h3>
+                    </div>
                     
-                    <div class="repo-info">
-                        <h4><i class="fab fa-github"></i>プロンプト集のリンク</h4>
-                        <a href="https://github.com/erikaambiru/simple-memo-app/blob/main/development-prompts.md" class="repo-link" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            https://github.com/erikaambiru/simple-memo-app/blob/main/development-prompts.md
-                        </a>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>機能</th>
+                                <th>Windsurf無料枠</th>
+                                <th>CascadeBase</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>コード補完・自然言語開発</td>
+                                <td><i class="fas fa-check feature-available"></i> 月間制限あり</td>
+                                <td><i class="fas fa-check feature-available"></i> 無制限</td>
+                            </tr>
+                            <tr>
+                                <td>AIモデルの精度</td>
+                                <td><i class="fas fa-check feature-available"></i> 高精度</td>
+                                <td><i class="fas fa-exclamation-triangle feature-limited"></i> 低精度</td>
+                            </tr>
+                            <tr>
+                                <td>料金</td>
+                                <td><i class="fas fa-check feature-available"></i> 制限超で月額：$15</td>
+                                <td><i class="fas fa-check feature-available"></i> 完全無料</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="note-box">
+                        <div class="note-title">
+                            <i class="fas fa-lightbulb"></i>
+                            CascadeBaseについて
+                        </div>
+                        <div class="note-text">
+                            CascadeBaseはWindsurfの完全無料版として提供されている代替ツールです。オープンソースモデルを使用しており、プライベートコードの取り扱いにも安心して利用できます。
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                <p class="text-blue-800 font-medium"><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>ポイント</p>
-                <p class="text-gray-700">Windsurfを使うと、フロントエンドとバックエンドの連携部分も含めて、一貫した開発が可能です。APIの設計からデータの受け渡しまで、全体を見通した提案をしてくれます。</p>
             </div>
         </div>
         
