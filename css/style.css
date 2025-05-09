@@ -50,6 +50,16 @@ body {
     background-color: #1d4ed8;
 }
 
+.pdf-btn {
+    margin-left: 15px;
+    background-color: #e53e3e;
+    text-decoration: none;
+}
+
+.pdf-btn:hover {
+    background-color: #c53030;
+}
+
 #slideCounter {
     margin: 0 20px;
     font-size: 1rem;

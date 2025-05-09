@@ -249,6 +249,36 @@
 
         <div class="card">
             <div class="card-title">
+                <i class="fas fa-user-check"></i> 受付
+            </div>
+            <p>以下のフォームから受付をお願いします。</p>
+            <div class="flex flex-col md:flex-col items-center justify-center gap-8 my-6">
+                <div class="text-center">
+                    <h3>オフライン参加者用QRコード</h3>
+                    <div class="image-container inline-block">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://forms.gle/FjkpNuG8VHdasmo77" alt="受付フォームQRコード" class="mx-auto">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3>オンライン参加者用リンク</h3>
+                    <a href="https://forms.gle/FjkpNuG8VHdasmo77" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1">
+                        受付フォームに移動 <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-wifi"></i> WiFi情報（オフライン参加者向け）
+            </div>
+            <div class="bg-gray-100 p-4 rounded-lg my-4">
+                <p class="font-medium">SSID：<span class="font-mono bg-white px-2 py-1 rounded">aterm-d3b175-a-z</span></p>
+                <p class="font-medium">PW：<span class="font-mono bg-white px-2 py-1 rounded">5ee5da6ef4bdfz</span></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">
                 <i class="fas fa-sitemap"></i> 勉強会体制図
             </div>
             
@@ -257,6 +287,47 @@
             </div>
             
             <p>体制図の説明：この体制図は、講師、サポートスタッフ、参加者の関係性を示しています。</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-exclamation-triangle"></i> オフライン参加者向けの注意事項
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                <h3 class="text-lg font-bold mb-2">＜　AI勉強会の注意事項、ご連絡事項　＞</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>オンラインMTG（GoogleMeet）への参加は、スタッフの指示に従ってください。<br>
+                        <span class="text-sm text-gray-600">※基本的には、オンラインMTGには参加せず、発表時に参加する。</span>
+                    </li>
+                    <li>オフィス禁煙、近隣も喫煙可能場所はございません。</li>
+                    <li>オフィストイレは、座って行ってください。</li>
+                    <li>キャップのついていない飲み物は、指定テーブルで飲んでください。<br>
+                        <span class="text-sm text-gray-600">※作業デスク上に置けるのは、キャップ付きのペットボトルのみ</span>
+                    </li>
+                    <li>アンケートは、最初と最後にあるのでご協力お願いします。</li>
+                    <li>当社記録用の写真撮影をさせていただきます。あらかじめご了承ください。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-file-alt"></i> 発表資料URL
+            </div>
+            <div class="p-4">
+                <ul class="list-disc pl-6 space-y-3">
+                    <li>
+                        <span class="font-semibold">安蒜</span>：
+                        <a href="https://simple-slideshow.onrender.com/" target="_blank" class="text-blue-600 hover:text-blue-800 underline">
+                            https://simple-slideshow.onrender.com/ <i class="fas fa-external-link-alt text-xs"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <span class="font-semibold">神林</span>：
+                        <span class="text-gray-600 italic">まだ未定</span>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="card">
@@ -299,14 +370,14 @@
                     <tr>
                         <td class="schedule-time">13:15</td>
                         <td>
-                            <div class="schedule-title">アジェンダ・内容</div>
+                            <div class="schedule-title">注意事項・資料の共有(URL)</div>
                         </td>
                         <td>今井、山本</td>
                     </tr>
                     <tr>
                         <td class="schedule-time">13:20</td>
                         <td>
-                            <div class="schedule-title">注意事項・資料の共有(URL)</div>
+                            <div class="schedule-title">アジェンダ・内容</div>
                         </td>
                         <td>今井、山本</td>
                     </tr>
@@ -358,6 +429,14 @@
                             <div class="schedule-title">解散</div>
                         </td>
                         <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="schedule-time">18:00 - 19:00</td>
+                        <td>
+                            <div class="schedule-title">懇親会</div>
+                            <div class="text-sm text-gray-600">勉強会終了後、軽い懇親会を予定しています。今回の内容以外の質問も受け付けますのでぜひご参加ください♪</div>
+                        </td>
+                        <td>希望者</td>
                     </tr>
                 </tbody>
             </table>
@@ -452,6 +531,27 @@
                             <div class="skill-badge"><i class="fas fa-glass-cheers"></i>お酒好き</div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-comment-dots"></i> 感想フォーム
+            </div>
+            <p>勉強会へのご参加ありがとうございました。以下のフォームから感想をお寄せください。</p>
+            <div class="flex flex-col md:flex-col items-center justify-center gap-8 my-6">
+                <div class="text-center">
+                    <h3>オフライン参加者用QRコード</h3>
+                    <div class="image-container inline-block">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://forms.gle/AnU2DkyGrYamtAiRA" alt="感想フォームQRコード" class="mx-auto">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h3>オンライン参加者用リンク</h3>
+                    <a href="https://forms.gle/AnU2DkyGrYamtAiRA" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1">
+                        感想フォームに移動 <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
                 </div>
             </div>
         </div>
