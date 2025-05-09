@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gitインストールとリポジトリクローンの手順</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #dbeafe;
+            padding-bottom: 0.75rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e40af;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-left: 0.75rem;
+            border-left: 4px solid #3b82f6;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #2563eb;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .step {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #3b82f6;
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 9999px;
+            font-weight: 600;
+            margin-right: 0.75rem;
+        }
+        .step-title {
+            display: inline-flex;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+        .code-block {
+            background-color: #f1f5f9;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            overflow-x: auto;
+            border-left: 3px solid #3b82f6;
+        }
+        .note {
+            background-color: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.375rem;
+        }
+        .note-title {
+            font-weight: 600;
+            color: #92400e;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .note-title i {
+            margin-right: 0.5rem;
+        }
+        .tip {
+            background-color: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.375rem;
+        }
+        .tip-title {
+            font-weight: 600;
+            color: #065f46;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .tip-title i {
+            margin-right: 0.5rem;
+        }
+        .image-container {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            border-radius: 0.375rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .image-caption {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-align: center;
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #3b82f6;
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .button:hover {
+            background-color: #2563eb;
+        }
+        .button i {
+            margin-right: 0.5rem;
+        }
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        .footer a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gitインストールとリポジトリクローンの手順</h1>
+            <p class="text-gray-600">このガイドでは、Gitのインストールからリポジトリのクローンまでの手順を詳しく説明します。</p>
+            <div class="flex space-x-4 mt-4 mb-8">
+                <a href="index.html" class="button">
+                    <i class="fas fa-home"></i> スライドショーに戻る
+                </a>
+                <a href="https://github.com/erikaambiru/simple-slideshow" target="_blank" class="button">
+                    <i class="fab fa-github"></i> GitHubリポジトリ
+                </a>
+            </div>
+        </header>
+
+        <div class="step">
+            <div class="step-title"><span class="step-number">1</span> Gitのインストール</div>
+            <p>Gitは、バージョン管理システムとして広く使われているツールです。以下の手順でインストールしましょう。</p>
+            
+            <h3>Windowsの場合</h3>
+            <ol>
+                <li>
+                    <a href="https://git-scm.com/download/win" target="_blank" class="text-blue-600 hover:underline">Git for Windows</a>をダウンロードします。
+                </li>
+                <li>ダウンロードしたインストーラーを実行します。</li>
+                <li>
+                    インストールオプションは基本的にデフォルトのままで問題ありませんが、以下の点に注意してください：
+                    <ul>
+                        <li>「Adjusting your PATH environment」では「Git from the command line and also from 3rd-party software」を選択すると便利です。</li>
+                        <li>「Configuring the line ending conversions」では、Windowsの場合「Checkout Windows-style, commit Unix-style line endings」がおすすめです。</li>
+                    </ul>
+                </li>
+                <li>インストールが完了したら、コマンドプロンプトまたはPowerShellを開き、<code>git --version</code>と入力して、Gitが正しくインストールされたか確認します。</li>
+            </ol>
+
+            <h3>macOSの場合</h3>
+            <ol>
+                <li>
+                    <strong>Homebrewを使う方法（推奨）</strong>：
+                    <div class="code-block">brew install git</div>
+                </li>
+                <li>
+                    <strong>インストーラーを使う方法</strong>：
+                    <a href="https://git-scm.com/download/mac" target="_blank" class="text-blue-600 hover:underline">Git for Mac</a>からインストーラーをダウンロードして実行します。
+                </li>
+                <li>ターミナルを開き、<code>git --version</code>と入力して、Gitが正しくインストールされたか確認します。</li>
+            </ol>
+
+            <h3>Linuxの場合</h3>
+            <p>ディストリビューションによって異なりますが、一般的なコマンドは以下の通りです：</p>
+            <ul>
+                <li>
+                    <strong>Debian/Ubuntu</strong>：
+                    <div class="code-block">sudo apt-get update<br>sudo apt-get install git</div>
+                </li>
+                <li>
+                    <strong>Fedora</strong>：
+                    <div class="code-block">sudo dnf install git</div>
+                </li>
+                <li>
+                    <strong>CentOS/RHEL</strong>：
+                    <div class="code-block">sudo yum install git</div>
+                </li>
+                <li>インストール後、<code>git --version</code>でインストールを確認します。</li>
+            </ul>
+
+            <div class="tip">
+                <div class="tip-title"><i class="fas fa-lightbulb"></i>ヒント</div>
+                <p>Gitをインストールすると、Git Bash（Windowsの場合）やターミナルからGitコマンドを実行できるようになります。また、多くのIDEやテキストエディタにはGit統合機能があり、GUIでGitを操作することも可能です。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title"><span class="step-number">2</span> Gitの初期設定</div>
+            <p>Gitをインストールしたら、ユーザー名とメールアドレスを設定します。これは、あなたが行った変更を識別するために使用されます。</p>
+
+            <div class="code-block">
+                git config --global user.name "あなたの名前"<br>
+                git config --global user.email "あなたのメールアドレス"
+            </div>
+
+            <p>設定を確認するには、以下のコマンドを実行します：</p>
+            <div class="code-block">
+                git config --list
+            </div>
+
+            <div class="note">
+                <div class="note-title"><i class="fas fa-info-circle"></i>注意</div>
+                <p>GitHubなどのサービスを使用する場合は、登録したメールアドレスと同じものを設定することをおすすめします。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title"><span class="step-number">3</span> GitHubアカウントの作成（オプション）</div>
+            <p>リモートリポジトリを使用する場合は、GitHubなどのサービスのアカウントが必要です。GitHubアカウントの作成手順は以下の通りです：</p>
+
+            <ol>
+                <li><a href="https://github.com/" target="_blank" class="text-blue-600 hover:underline">GitHub</a>にアクセスします。</li>
+                <li>「Sign up」ボタンをクリックします。</li>
+                <li>メールアドレス、パスワード、ユーザー名を入力します。</li>
+                <li>アカウント確認のためのメールを受け取り、確認します。</li>
+                <li>アカウント設定を完了します。</li>
+            </ol>
+
+            <div class="tip">
+                <div class="tip-title"><i class="fas fa-lightbulb"></i>ヒント</div>
+                <p>GitHubでは、無料アカウントでも無制限の公開リポジトリを作成できます。また、プライベートリポジトリも制限付きで利用可能です。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title"><span class="step-number">4</span> SSH鍵の設定（推奨）</div>
+            <p>GitHubなどのサービスとの安全な通信のために、SSH鍵を設定することをおすすめします。</p>
+
+            <h3>SSH鍵の生成</h3>
+            <ol>
+                <li>
+                    ターミナル（Git Bash、コマンドプロンプト、PowerShellなど）を開きます。
+                </li>
+                <li>
+                    以下のコマンドを実行して、SSH鍵を生成します：
+                    <div class="code-block">ssh-keygen -t ed25519 -C "あなたのメールアドレス"</div>
+                </li>
+                <li>
+                    保存先の指定を求められたら、デフォルトのままEnterキーを押します。
+                </li>
+                <li>
+                    パスフレーズの入力を求められたら、セキュリティを高めるためにパスフレーズを設定することをおすすめします。
+                </li>
+            </ol>
+
+            <h3>SSH鍵をGitHubに追加</h3>
+            <ol>
+                <li>
+                    以下のコマンドで公開鍵をクリップボードにコピーします：
+                    <div class="code-block">
+                        # Windowsの場合<br>
+                        clip < ~/.ssh/id_ed25519.pub<br><br>
+                        # macOSの場合<br>
+                        pbcopy < ~/.ssh/id_ed25519.pub<br><br>
+                        # Linuxの場合<br>
+                        xclip -sel clip < ~/.ssh/id_ed25519.pub
+                    </div>
+                </li>
+                <li>GitHubにログインし、右上のプロフィールアイコンをクリックして「Settings」を選択します。</li>
+                <li>左側のメニューから「SSH and GPG keys」を選択します。</li>
+                <li>「New SSH key」ボタンをクリックします。</li>
+                <li>タイトルを入力し（例：「My Laptop」）、「Key」フィールドに先ほどコピーした公開鍵を貼り付けます。</li>
+                <li>「Add SSH key」ボタンをクリックして保存します。</li>
+            </ol>
+
+            <div class="note">
+                <div class="note-title"><i class="fas fa-info-circle"></i>注意</div>
+                <p>SSH鍵を設定すると、パスワードを入力せずにGitHubとの通信が可能になります。ただし、パスフレーズを設定した場合は、最初の接続時にパスフレーズの入力が必要です。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title"><span class="step-number">5</span> リポジトリのクローン</div>
+            <p>既存のリポジトリをローカルにコピー（クローン）する方法を説明します。</p>
+
+            <h3>HTTPSを使用したクローン</h3>
+            <ol>
+                <li>
+                    GitHubのリポジトリページにアクセスします。
+                </li>
+                <li>
+                    「Code」ボタンをクリックし、「HTTPS」タブを選択します。
+                </li>
+                <li>
+                    URLをコピーします（例：<code>https://github.com/username/repository.git</code>）。
+                </li>
+                <li>
+                    ターミナルを開き、リポジトリをクローンしたいディレクトリに移動します。
+                </li>
+                <li>
+                    以下のコマンドを実行します：
+                    <div class="code-block">git clone https://github.com/username/repository.git</div>
+                </li>
+                <li>
+                    GitHubのユーザー名とパスワード（またはアクセストークン）の入力を求められる場合があります。
+                </li>
+            </ol>
+
+            <h3>SSHを使用したクローン（SSH鍵を設定済みの場合）</h3>
+            <ol>
+                <li>
+                    GitHubのリポジトリページにアクセスします。
+                </li>
+                <li>
+                    「Code」ボタンをクリックし、「SSH」タブを選択します。
+                </li>
+                <li>
+                    URLをコピーします（例：<code>git@github.com:username/repository.git</code>）。
+                </li>
+                <li>
+                    ターミナルを開き、リポジトリをクローンしたいディレクトリに移動します。
+                </li>
+                <li>
+                    以下のコマンドを実行します：
+                    <div class="code-block">git clone git@github.com:username/repository.git</div>
+                </li>
+            </ol>
+
+            <h3>スライドショーリポジトリのクローン</h3>
+            <p>このスライドショーのリポジトリをクローンするには、以下のコマンドを実行します：</p>
+            <div class="code-block">
+                # HTTPSを使用する場合<br>
+                git clone https://github.com/erikaambiru/simple-slideshow.git<br><br>
+                # SSHを使用する場合<br>
+                git clone git@github.com:erikaambiru/simple-slideshow.git
+            </div>
+
+            <div class="tip">
+                <div class="tip-title"><i class="fas fa-lightbulb"></i>ヒント</div>
+                <p>クローンしたリポジトリには、すべてのファイルとGit履歴が含まれています。リポジトリのディレクトリに移動して、<code>git log</code>コマンドを実行すると、コミット履歴を確認できます。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title"><span class="step-number">6</span> 基本的なGitコマンド</div>
+            <p>リポジトリをクローンした後、以下の基本的なGitコマンドを使って作業を進めることができます：</p>
+
+            <ul>
+                <li>
+                    <strong>git status</strong>：現在の作業ディレクトリの状態を確認します。
+                    <div class="code-block">git status</div>
+                </li>
+                <li>
+                    <strong>git add</strong>：変更をステージングエリアに追加します。
+                    <div class="code-block">
+                        # 特定のファイルを追加<br>
+                        git add filename.txt<br><br>
+                        # すべての変更を追加<br>
+                        git add .
+                    </div>
+                </li>
+                <li>
+                    <strong>git commit</strong>：ステージングエリアの変更をコミットします。
+                    <div class="code-block">git commit -m "コミットメッセージ"</div>
+                </li>
+                <li>
+                    <strong>git pull</strong>：リモートリポジトリの変更をローカルリポジトリに取り込みます。
+                    <div class="code-block">git pull</div>
+                </li>
+                <li>
+                    <strong>git push</strong>：ローカルの変更をリモートリポジトリに送信します。
+                    <div class="code-block">git push</div>
+                </li>
+                <li>
+                    <strong>git branch</strong>：ブランチを一覧表示します。
+                    <div class="code-block">git branch</div>
+                </li>
+                <li>
+                    <strong>git checkout</strong>：ブランチを切り替えます。
+                    <div class="code-block">
+                        # 既存のブランチに切り替え<br>
+                        git checkout branch-name<br><br>
+                        # 新しいブランチを作成して切り替え<br>
+                        git checkout -b new-branch-name
+                    </div>
+                </li>
+            </ul>
+
+            <div class="note">
+                <div class="note-title"><i class="fas fa-info-circle"></i>注意</div>
+                <p>最近のGitでは、<code>git checkout</code>の代わりに<code>git switch</code>と<code>git restore</code>を使うことが推奨されています。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title"><span class="step-number">7</span> トラブルシューティング</div>
+            <p>Gitを使用する際によく遭遇する問題とその解決方法を紹介します。</p>
+
+            <h3>認証エラー</h3>
+            <p>GitHubへのプッシュ時に認証エラーが発生する場合：</p>
+            <ul>
+                <li>HTTPSを使用している場合は、正しいユーザー名とパスワード（またはアクセストークン）を入力しているか確認してください。</li>
+                <li>SSHを使用している場合は、SSH鍵が正しく設定されているか確認してください。</li>
+            </ul>
+
+            <h3>マージ競合</h3>
+            <p>複数の人が同じファイルを編集すると、マージ競合が発生することがあります。競合を解決するには：</p>
+            <ol>
+                <li>競合しているファイルを開きます。</li>
+                <li>競合マーカー（<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>、<code>=======</code>、<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>）を探します。</li>
+                <li>競合を手動で解決し、マーカーを削除します。</li>
+                <li>変更をステージングし、コミットします。</li>
+            </ol>
+
+            <h3>コミットの取り消し</h3>
+            <p>直前のコミットを取り消す方法：</p>
+            <div class="code-block">
+                # コミットを取り消すが、変更は保持する<br>
+                git reset --soft HEAD~1<br><br>
+                # コミットを取り消し、変更も破棄する<br>
+                git reset --hard HEAD~1
+            </div>
+
+            <div class="tip">
+                <div class="tip-title"><i class="fas fa-lightbulb"></i>ヒント</div>
+                <p>Gitに関する詳細なドキュメントは、<a href="https://git-scm.com/doc" target="_blank" class="text-blue-600 hover:underline">公式ドキュメント</a>で確認できます。また、<a href="https://ohshitgit.com/" target="_blank" class="text-blue-600 hover:underline">Oh Shit, Git!?</a>は、Gitで困ったときに役立つリソースです。</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-title"><span class="step-number">8</span> おすすめのGitツール</div>
+            <p>コマンドラインでのGit操作が苦手な場合は、以下のGUIツールを検討してみてください：</p>
+
+            <ul>
+                <li>
+                    <strong><a href="https://desktop.github.com/" target="_blank" class="text-blue-600 hover:underline">GitHub Desktop</a></strong>：
+                    GitHubが提供する無料のデスクトップクライアント。シンプルで使いやすいインターフェースが特徴です。
+                </li>
+                <li>
+                    <strong><a href="https://www.sourcetreeapp.com/" target="_blank" class="text-blue-600 hover:underline">Sourcetree</a></strong>：
+                    Atlassianが提供する無料のGitクライアント。高度な機能を備えています。
+                </li>
+                <li>
+                    <strong><a href="https://www.gitkraken.com/" target="_blank" class="text-blue-600 hover:underline">GitKraken</a></strong>：
+                    美しいインターフェースと直感的な操作が特徴のGitクライアント。基本機能は無料で利用できます。
+                </li>
+                <li>
+                    <strong><a href="https://code.visualstudio.com/" target="_blank" class="text-blue-600 hover:underline">Visual Studio Code</a></strong>：
+                    人気のコードエディタで、Gitの統合機能が充実しています。
+                </li>
+            </ul>
+
+            <div class="tip">
+                <div class="tip-title"><i class="fas fa-lightbulb"></i>ヒント</div>
+                <p>GUIツールを使用すると、コマンドラインを使わずにGitの操作が可能ですが、基本的なGitコマンドを理解しておくことをおすすめします。</p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>作成日: 2025年5月9日 | <a href="index.html">スライドショーに戻る</a> | <a href="https://github.com/erikaambiru/simple-slideshow" target="_blank">GitHubリポジトリ</a></p>
+        </footer>
+    </div>
+</body>
+</html>
