@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI用語集</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .header {
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1e40af;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #dbeafe;
+        }
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2563eb;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .card-title {
+            background: linear-gradient(90deg, #dbeafe, #eff6ff);
+            padding: 1rem 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e40af;
+            border-bottom: 1px solid #bfdbfe;
+            display: flex;
+            align-items: center;
+        }
+        .card-title i {
+            margin-right: 0.75rem;
+            color: #3b82f6;
+        }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            background-color: white;
+            color: #1e40af;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .button:hover {
+            background-color: #f9fafb;
+            transform: translateY(-1px);
+        }
+        .button i {
+            margin-right: 0.5rem;
+        }
+        .glossary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        .glossary-table th, .glossary-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .glossary-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #4b5563;
+        }
+        .glossary-table tr:last-child td {
+            border-bottom: none;
+        }
+        .glossary-term {
+            font-weight: 600;
+            color: #1e40af;
+        }
+        .glossary-section {
+            margin-top: 1.5rem;
+            padding: 1rem;
+        }
+        .glossary-section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+        .glossary-section-title i {
+            margin-right: 0.75rem;
+            color: #3b82f6;
+        }
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        .footer a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>AI用語集</h1>
+            <div class="flex space-x-4 mt-4">
+                <a href="about.html" class="button">
+                    <i class="fas fa-info-circle"></i> AI勉強会について
+                </a>
+                <a href="git-setup.html" class="button">
+                    <i class="fas fa-code-branch"></i> Git環境構築ガイド
+                </a>
+            </div>
+        </header>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-book"></i> AI用語集について
+            </div>
+            <div class="p-4">
+                <p>このページでは、AI勉強会で使用される主要な用語を解説しています。AI開発や利用の際に役立つ基本的な用語から応用的な概念まで幅広く網羅しています。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-graduation-cap"></i> 基本用語
+            </div>
+            <div class="glossary-section">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th width="30%">用語</th>
+                            <th>説明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">AI（人工知能）</td>
+                            <td>人間の知能を模倣するよう設計されたシステム。機械学習やディープラーニングも含まれる広い概念。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">機械学習（Machine Learning）</td>
+                            <td>経験（データ）をもとにパターンを学び、予測や分類を行うAIの一分野。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">ディープラーニング（Deep Learning）</td>
+                            <td>人間の脳を模した「ニューラルネットワーク」を使って高度な学習を行う機械学習の手法。画像認識や自然言語処理で活躍。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">プロンプト（Prompt）</td>
+                            <td>AIに対する指示・入力文。特に生成AI（ChatGPTなど）で使われる言葉。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">自然言語処理（NLP）</td>
+                            <td>人間の言語（自然言語）を理解・生成・翻訳・要約する技術。ChatGPTもこの技術を使っている。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-comment-dots"></i> 生成AI関連
+            </div>
+            <div class="glossary-section">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th width="30%">用語</th>
+                            <th>説明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">トークン（Token）</td>
+                            <td>AIが処理する最小単位のテキスト。日本語なら1〜2文字、英語なら単語程度。処理制限や料金計算の単位。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">温度（Temperature）</td>
+                            <td>出力のランダム性を調整するパラメータ。高いと創造的、低いと堅実な回答になりやすい。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">ファインチューニング</td>
+                            <td>既存のAIモデルを特定の目的・データに合わせて追加学習させること。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">AIエージェント</td>
+                            <td>自律的に目標達成のために行動を選ぶAIの仕組み。複数のツールやAPIと連携するものも多い。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-building"></i> AI関連技術
+            </div>
+            <div class="glossary-section">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th width="30%">用語</th>
+                            <th>説明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">API</td>
+                            <td>外部アプリケーションからAIの機能を利用するためのインターフェース。OpenAI APIを使えば、自分のアプリにChatGPTを組み込める。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Embeddings（埋め込み）</td>
+                            <td>単語や文章を数値ベクトルに変換し、意味的な類似度などを計算できるようにする技術。検索や分類に活用。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">RAG（Retrieval-Augmented Generation）</td>
+                            <td>検索（情報取得）＋生成を組み合わせたAIの手法。企業データやFAQなどに基づいて自然な回答を出せる。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">マルチモーダルAI</td>
+                            <td>テキストだけでなく、画像・音声・動画など複数のデータ形式を扱うAI（例：GPT-4の画像入力機能など）。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-flask"></i> 応用・実践用語
+            </div>
+            <div class="glossary-section">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th width="30%">用語</th>
+                            <th>説明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">プロンプトエンジニアリング</td>
+                            <td>AIに適切な応答をさせるために、入力文を工夫・調整する技術。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">ハルシネーション</td>
+                            <td>AIがそれらしく見えるが実際には間違った内容を生成する現象。「それっぽいウソ」に注意。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">コーパス（Corpus）</td>
+                            <td>AIの学習に使われる大量の文章・データ集。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">LLM（大規模言語モデル）</td>
+                            <td>巨大なテキストデータから学習し、多用途に使える自然言語モデル（例：GPT-4、Claude、Geminiなど）。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">ファインチューニング vs プロンプト設計</td>
+                            <td>モデル自体をカスタマイズする方法と、入力（プロンプト）を工夫する方法の対比。前者は高コスト、後者は手軽。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <i class="fas fa-globe"></i> 主要な生成AIモデルと提供企業
+            </div>
+            <div class="glossary-section">
+                <table class="glossary-table">
+                    <thead>
+                        <tr>
+                            <th width="20%">モデル名</th>
+                            <th width="30%">提供企業</th>
+                            <th>概要</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="glossary-term">Claude</td>
+                            <td>Anthropic（アンソロピック）</td>
+                            <td>「安全で信頼性のあるAI」を重視する企業が開発した対話型AI。倫理性と制御可能性に重点を置いており、Claude 3は多言語対応や文脈理解に優れる。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">GPT（ChatGPT）</td>
+                            <td>OpenAI</td>
+                            <td>GPT（Generative Pre-trained Transformer）シリーズの最新版はGPT-4（ProはGPT-4-turbo）。自然な対話や生成性能に優れており、世界中で最も広く使われている対話AIの一つ。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Gemini（旧Bard）</td>
+                            <td>Google DeepMind（グーグル・ディープマインド）</td>
+                            <td>Googleが開発した大規模言語モデル。Bardから名前を変更し、マルチモーダル（テキスト＋画像など）対応が特徴。GmailやGoogleドキュメントと連携可能。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">Grok</td>
+                            <td>xAI（イーエックスエーアイ）（※創設者：イーロン・マスク）</td>
+                            <td>X（旧Twitter）に統合されている対話AI。皮肉やユーモアを理解しやすいように設計されており、やや"人間臭い"応答が特徴。</td>
+                        </tr>
+                        <tr>
+                            <td class="glossary-term">DeepSeek</td>
+                            <td>DeepSeek（中国発のAIスタートアップ）</td>
+                            <td>オープンソース型の大規模言語モデルで、英語と中国語に強い。研究・技術者向けの活用が進んでいる。高精度かつパフォーマンスに優れた構造が売り。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 AI勉強会 | <a href="index.html">スライドショーに戻る</a></p>
+        </footer>
+    </div>
+</body>
+</html>
